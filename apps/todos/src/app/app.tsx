@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Todo } from '@myorg/data';
+import { Todos } from '@myorg/ui';
 
 const App = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
+  const getTodos = async () => {
+    const response = await fetch('/api/todos');
+    const todos = await response.json();
+    console.log('🚀 ~ file: app.tsx ~ line 11 ~ getTodos ~ todos', todos);
+    setTodos(todos);
+  };
+
   useEffect(() => {
-    fetch('/api/todos')
-      .then((_) => _.json())
-      .then(setTodos);
+    getTodos();
   }, []);
 
   const addTodo = async () => {
@@ -22,11 +28,7 @@ const App = () => {
   return (
     <>
       <h1>Todos</h1>
-      <ul>
-        {todos.map((t) => (
-          <li className={'todo'}>{t.title}</li>
-        ))}
-      </ul>
+      <Todos todos={todos} />
       <button id={'add-todo'} onClick={addTodo}>
         Add Todo
       </button>
