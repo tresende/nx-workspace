@@ -1,0 +1,9 @@
+{
+  "conventionalCommits.scopes": [
+    "logistics-operator",
+    "ops-management",
+    "bootstrap",
+    "core",
+    "e2e"
+  ]
+}
