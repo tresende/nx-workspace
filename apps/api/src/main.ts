@@ -1,5 +1,6 @@
 import * as express from 'express';
 import { addTodoRoutes } from './app/todos';
+import { Todo } from '@myorg/data';
 
 const app = express();
 
