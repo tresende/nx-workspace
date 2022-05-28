@@ -4,6 +4,7 @@
     "ops-management",
     "bootstrap",
     "core",
-    "e2e"
+    "e2e",
+    "app"
   ]
 }
