@@ -1,40 +1,40 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { useState } from 'react';
-import styles from './app.module.css';
+import { useEffect, useState } from 'react';
 
-type Todo = {
+interface Todo {
   title: string;
-};
+}
 
-export function App() {
-  const [todos, setTodos] = useState<Todo[]>([
-    { title: 'todo1' },
-    { title: 'todo2' },
-  ]);
+const App = () => {
+  const [todos, setTodos] = useState<Todo[]>([]);
 
-  const addTodo = () => {
-    setTodos([
-      ...todos,
-      { title: `New todo ${Math.floor(Math.random() * 1000)}` },
-    ]);
+  useEffect(() => {
+    fetch('/api/todos')
+      .then((_) => _.json())
+      .then(setTodos);
+  }, []);
+
+  const addTodo = async () => {
+    const response = await fetch('/api/addTodo', {
+      method: 'POST',
+      body: '',
+    });
+    const newTodo = await response.json();
+    setTodos([...todos, newTodo]);
   };
 
   return (
     <>
       <h1>Todos</h1>
       <ul>
-        {todos.map((todo) => (
-          <li className="todo" key={todo.title}>
-            {todo.title}
-          </li>
+        {todos.map((t) => (
+          <li className={'todo'}>{t.title}</li>
         ))}
       </ul>
-      <button id="add-todo" type="button" onClick={addTodo}>
+      <button id={'add-todo'} onClick={addTodo}>
         Add Todo
       </button>
-      <div />
     </>
   );
-}
+};
 
 export default App;
