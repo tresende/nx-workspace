@@ -48,7 +48,8 @@
         "serve": {
           "builder": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "store:build"
+            "buildTarget": "store:build",
+            "port": 3000
           },
           "configurations": {
             "production": {
