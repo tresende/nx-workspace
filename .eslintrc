@@ -7,13 +7,13 @@
     "project": "./tsconfig.base.json"
   },
   "ignorePatterns": ["**/*"],
-  "plugins": ["@typescript-eslint", "@nrwl/nx"],
+  "plugins": ["@typescript-eslint", "@nrwl/nx", "react", "react-hooks", "@typescript-eslint", "simple-import-sort"],
   "extends": [
     "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "prettier/@typescript-eslint"
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "@typescript-eslint/explicit-member-accessibility": "off",
@@ -24,8 +24,27 @@
       {
         "enforceBuildableLibDependency": true,
         "allow": [],
-        "depConstraints": [
-          { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
+        "depConstraints": [{ "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }]
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          ["^\\u0000", "^react", "^@?\\w"], //react and modules
+          [
+            "^\\.\\.(?!/?$)", //relative imports from other folder
+            "^\\.\\./?$", // Parent imports. Put `..` last.
+            "^\\.(?!/?$)", //relative imports from current folder
+            "^\\./?$" // Other relative imports. Put same-folder imports and `.` last.
+          ],
+          ["^\\.(/style(s|d)?$)"] //styles
         ]
       }
     ]
