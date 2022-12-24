@@ -61,10 +61,7 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "apps/store/tsconfig.app.json",
-              "apps/store/tsconfig.spec.json"
-            ],
+            "tsConfig": ["apps/store/tsconfig.app.json", "apps/store/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!apps/store/**/*"]
           }
         },
@@ -116,10 +113,7 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/store/ui-shared/tsconfig.lib.json",
-              "libs/store/ui-shared/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/store/ui-shared/tsconfig.lib.json", "libs/store/ui-shared/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/store/ui-shared/**/*"]
           }
         },
@@ -147,10 +141,7 @@
               "libs/store/util-formatters/tsconfig.lib.json",
               "libs/store/util-formatters/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/store/util-formatters/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/store/util-formatters/**/*"]
           }
         },
         "test": {
@@ -158,6 +149,33 @@
           "options": {
             "jestConfig": "libs/store/util-formatters/jest.config.js",
             "tsConfig": "libs/store/util-formatters/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "store-feature-game-detail": {
+      "root": "libs/store/feature-game-detail",
+      "sourceRoot": "libs/store/feature-game-detail/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/store/feature-game-detail/tsconfig.lib.json",
+              "libs/store/feature-game-detail/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/store/feature-game-detail/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/store/feature-game-detail/jest.config.js",
+            "tsConfig": "libs/store/feature-game-detail/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
