@@ -1,8 +1,3 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import * as express from 'express'
 import { getAllGames, getGame } from './app/games.repository'
 
@@ -16,7 +11,7 @@ app.get('/api/games', (req, res) => {
   res.send(getAllGames())
 })
 
-app.get('/api/games:/id', (req, res) => {
+app.get('/api/games/:id', (req, res) => {
   res.send(getGame(req.params.id))
 })
 
