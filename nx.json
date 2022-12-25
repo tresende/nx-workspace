@@ -44,8 +44,12 @@
     "api": {
       "tags": []
     },
-    "api-interfaces": {
+    "api-util-interfaces": {
       "tags": []
+    },
+    "store-ui-shared-e2e": {
+      "tags": [],
+      "implicitDependencies": ["store-ui-shared"]
     }
   }
 }
