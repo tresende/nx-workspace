@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "nx": "nx",
-    "start": "export NODE_OPTIONS=--openssl-legacy-provider &&  nx serve",
-    "start:app-with-fakebackend": "nx run-many --target=serve --projects=api,store --parallel=true",
+    "start:old": "nx serve",
+    "start": "nx run-many --target=serve --projects=api,store --parallel=true",
     "build": "nx build",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",

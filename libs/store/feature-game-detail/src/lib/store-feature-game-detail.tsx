@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import CardMedia from '@material-ui/core/CardMedia'
 import { formatRating } from '@nxegghead/store/util-formatters'
+import { Game } from '@nxegghead/api/interfaces'
 
 type TParams = { id: string }
 
@@ -16,10 +17,10 @@ export interface StoreFeatureGameDetailProps extends RouteComponentProps<TParams
 
 export const StoreFeatureGameDetail = (props: StoreFeatureGameDetailProps) => {
   const [state, setState] = useState<{
-    data: any
+    data: Game
     loadingState: 'success' | 'error' | 'loading'
   }>({
-    data: {},
+    data: {} as Game,
     loadingState: 'success'
   })
 
